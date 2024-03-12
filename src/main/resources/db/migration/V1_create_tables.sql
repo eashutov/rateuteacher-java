@@ -52,20 +52,6 @@ CREATE TABLE IF NOT EXISTS question (
 	type VARCHAR(10) NOT NULL check (type in ('RADIO', 'COMMENT', 'CHECK')),
 );
 
-CREATE TABLE IF NOT EXISTS questionnaire (
-	id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-	standard VARCHAR(100) NOT NULL,
-	description TEXT
-);
-
-CREATE TABLE IF NOT EXISTS question (
-	id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-	questionnaire UUID REFERENCES questionnaire(id),
-	part VARCHAR(30),
-	question TEXT NOT NULL,
-	type VARCHAR(10) NOT NULL check (type in ('RADIO', 'COMMENT', 'CHECK'))
-);
-
 CREATE TABLE IF NOT EXISTS survey (
 	id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
 	code VARCHAR(20) NOT NULL,
