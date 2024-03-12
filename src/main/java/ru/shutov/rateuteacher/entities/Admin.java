@@ -29,8 +29,10 @@ public class Admin {
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    // TODO: что делать с этими полями?
+    @Column(name = "login")
     private String login;
+
+    @Column(name = "password")
     private String password;
 
     @OneToOne

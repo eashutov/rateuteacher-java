@@ -30,7 +30,7 @@ public class Questionnaire {
     private String description;
 
     @OneToMany(mappedBy = "questionnaire")
-    private Set<Question> questions;
+    private Set<Question> questions = new HashSet<>();
 
     @OneToMany(mappedBy = "questionnaire")
     private Set<Survey> surveys = new HashSet<>();
