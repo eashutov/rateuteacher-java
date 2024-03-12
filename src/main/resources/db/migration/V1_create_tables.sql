@@ -13,12 +13,12 @@ CREATE TABLE IF NOT EXISTS person (
 	last_name VARCHAR(100) NOT NULL,
 	first_name VARCHAR(100) NOT NULL,
 	patronymic VARCHAR(100) NOT NULL,
-	id_department UUID REFERENCES department(id)
+	department UUID REFERENCES department(id)
 );
 
 CREATE TABLE IF NOT EXISTS teacher (
 	id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-	id_person UUID REFERENCES person(id),
+	person UUID REFERENCES person(id),
 	experience int NOT NULL
 );
 
@@ -31,8 +31,8 @@ CREATE TABLE IF NOT EXISTS contact (
 
 CREATE TABLE IF NOT EXISTS admin (
 	id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-	id_person UUID REFERENCES person(id),
-	role VARCHAR(10) NOT NULL,
+	person UUID REFERENCES person(id),
+	role VARCHAR(10) NOT NULL CHECK (role in ('MODERATOR', 'ADMIN')),
 	login VARCHAR(100) NOT NULL,
 	password VARCHAR(100) NOT NULL,
 	contact UUID REFERENCES contact(id)
@@ -88,4 +88,9 @@ CREATE TABLE IF NOT EXISTS answer (
 	rating UUID REFERENCES rating(id),
 	question UUID REFERENCES question(id),
 	answer VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS teacher_discipline (
+    teacher UUID REFERENCES teacher(id),
+    discipline UUID REFERENCES discipline(id)
 );
