@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS question (
 	questionnaire UUID REFERENCES questionnaire(id),
 	part VARCHAR(30),
 	question TEXT NOT NULL,
-	type VARCHAR(10) NOT NULL check (type in ('RADIO', 'COMMENT', 'CHECK')),
+	type VARCHAR(10) NOT NULL check (type in ('RADIO', 'COMMENT', 'CHECK'))
 );
 
 CREATE TABLE IF NOT EXISTS survey (

@@ -22,6 +22,7 @@ public class Rating {
     private UUID id;
 
     @Column(name = "completion_date")
+    @Temporal(TemporalType.DATE)
     private Date completionDate;
 
     @ManyToOne
