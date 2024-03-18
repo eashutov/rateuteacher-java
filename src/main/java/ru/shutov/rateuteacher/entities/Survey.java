@@ -30,6 +30,7 @@ public class Survey {
     private int usages;
 
     @Column(name = "creation_date")
+    @Temporal(TemporalType.DATE)
     private Date creationDate;
 
     @Column(name = "study_group")
