@@ -30,9 +30,9 @@ public class IndexController {
     @GetMapping("/contacts")
     public String contacts(Model model) {
         List<Admin> admins = adminService.getAdmins();
-        model.addAttribute("admins",
+        model.addAttribute("adminList",
                 admins.stream().filter(admin -> admin.getRole() == Role.ROLE_ADMIN).toList());
-        model.addAttribute("moderators",
+        model.addAttribute("moderatorList",
                 admins.stream().filter(admin -> admin.getRole() == Role.ROLE_MODERATOR).toList());
         return "index/contacts";
     }

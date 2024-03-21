@@ -38,4 +38,8 @@ public class Person {
 
     @OneToMany(mappedBy = "person")
     private Set<Admin> admins;
+
+    public String getFullName() {
+        return lastName + " " + firstName + " " + patronymic;
+    }
 }

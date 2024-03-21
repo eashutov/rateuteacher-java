@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head (pageTitle = 'Contacts')}">
+</head>
+<body>
+<div class="wrapper">
+
+    <div th:replace="~{fragments/layout :: header}"></div>
+
+    <main class="main-grid-type">
+        <div></div>
+        <div class="grid-type-container">
+            <div class="category">
+                <h1>Администрация</h1>
+                <div class="card-container">
+                    <div class="card" th:each="admin : ${adminList}">
+                        <div class="card-info">
+                            <h1 class="card-name" th:text="${admin.person.getFullName()}"></h1>
+                            <p><strong>КАФЕДРА:</strong><span th:text="${admin.person.department.name}"></span></p>
+                            <p><strong>АУДИТОРИЯ:</strong><span th:text="${admin.contact.contactDetails.officeVisible} ? ${admin.contact.office} : '---'"></span></p>
+                            <p><strong>ЭЛЕКТРОННАЯ&nbsp;ПОЧТА:</strong><br><span th:text="${admin.contact.contactDetails.emailVisible} ? ${admin.contact.email} : '---'"></span></p>
+                            <p><strong>ТЕЛЕФОН:</strong><span th:text="${admin.contact.contactDetails.phoneVisible} ? ${admin.contact.phone} : '---'"></span></p>
+                        </div>
+                        <img th:src="${admin.contact.photo}" alt="photo">
+                    </div>
+                </div>
+            </div>
+            <div class="category after-category">
+                <h1>Модерация</h1>
+                <table class="table_sort" id="admin-table">
+                    <thead>
+                    <tr>
+                        <th>Фамилия Имя Отчество</th>
+                        <th>Кафедра</th>
+                        <th>Эл. почта</th>
+                        <th>Телефон</th>
+                        <th>Аудитория</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="moderator : ${moderatorList}">
+                        <td th:text="${admin.person.getFullName()}"></td>
+                        <td th:text="${admin.person.department.name}"></td>
+                        <td th:text="${admin.contact.contactDetails.emailVisible} ? ${admin.contact.email} : '---'"></td>
+                        <td th:text="${admin.contact.contactDetails.phoneVisible} ? ${admin.contact.phone} : '---'"></td>
+                        <td th:text="${admin.contact.contactDetails.officeVisible} ? ${admin.contact.office} : '---'"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div></div>
+    </main>
+
+    <div th:replace="~{fragments/layout :: footer}"></div>
+
+</div>
+</body>
+</html>

@@ -1,10 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head (pageTitle = 'RateUTeacher')}">
 </head>
 <body>
-    <h1>Test index page</h1>
+<div class="wrapper">
+
+    <div th:replace="~{fragments/layout :: header}"></div>
+
+    <main class="main-flex-type">
+        <div class="code-window">
+            <div class="logo-text">
+                RateUTeacher
+            </div>
+            <div class="form">
+                <form th:action="@{/survey}" th:object="${survey}" method="post" class="form-input">
+                    <div class="input-container">
+                        <input th:field="*{code}" type="text" class="code-input" id="code" placeholder="Введите код опроса" required>
+                        <label for="code" class="label">Код опроса</label>
+                        <div th:if="${param.wrong}" class="warn-c"><kbd class="warn">Код недействителен</kbd></div>
+                        <button class="grad-btn" type="submit" id="btn">Начать опрос</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <div th:replace="~{fragments/layout :: footer}"></div>
+
+</div>
+<script th:src="@{scripts/pattern.js}"></script>
 </body>
 </html>
