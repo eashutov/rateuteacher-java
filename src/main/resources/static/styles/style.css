@@ -19,50 +19,6 @@ body {
     --bkg-image: url("../images/background_cloud.png");
 }
 
-/* 
-    почему тут название класса dark-theme, а в media - light-theme, когда
-    можно назвать один класс (invert к примеру) и тогглить его?
-    рассмотреть это решение
-*/
-
-/*body.dark-theme {
-    --text-color: rgb(230,230,230);
-    --bkg-color: rgb(50,50,50);
-    --bkg-image-color: rgba(50,50,50,0.97);
-    --bkg-image-deep: rgba(50,50,50,0.4);
-    --border-color: rgb(100,100,100);
-    --border-deep: rgb(250,250,250);
-    --bkg-backdrop: rgba(50,50,50,0.3);
-    --invert: invert(0.9);
-    --bkg-image: url("../images/background_cloud_dark.png");
-}
-
-@media (prefers-color-scheme: dark) {
-    body {
-        --text-color: rgb(230,230,230);
-        --bkg-color: rgb(50,50,50);
-        --bkg-image-color: rgba(50,50,50,0.97);
-        --bkg-image-deep: rgba(50,50,50,0.4);
-        --border-color: rgb(100,100,100);
-        --border-deep: rgb(250,250,250);
-        --bkg-backdrop: rgba(50,50,50,0.3);
-        --invert: invert(0.9);
-        --bkg-image: url("../images/background_cloud_dark.png");
-    }
-
-    body.light-theme {
-        --text-color: black;
-        --bkg-color: white;
-        --bkg-image-color: rgba(255,255,255,0.96);
-        --bkg-image-deep: rgba(255,255,255,0.6);
-        --border-color: rgb(205,205,205);
-        --border-deep: black;
-        --bkg-backdrop: rgba(255,255,255,0.3);
-        --invert: invert(0);
-        --bkg-image: url("../images/background_cloud.png");
-    }
-}*/
-
 *, *::after, *::before {
     margin: 0;
     padding: 0;
@@ -152,64 +108,6 @@ HEADER ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 }
 
 /*
-.search-bar {
-    width: 100%;
-    max-width: 500px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid var(--border-deep);
-}
-
-.search-bar input {
-    flex: 1;
-    border: 0;
-    outline: 0;
-    padding: 8px;
-    padding-right: 0;
-    width: 350px;
-    font-weight: 500;
-}
-
-.search-bar button {
-    border: 0;
-    background-color: transparent;
-    padding: 3px 4px 0 1px;
-}
-
-.search-bar button img:hover {
-    background-color: rgba(132, 189, 194, 0.1);
-    transition: all .3s ease;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.search-bar input::placeholder,
-.search-bar input:focus,
-.search-bar input:valid {
-    color: black;
-    font-family: 'Montserrat';
-}
-
-[type="search"]::-webkit-search-cancel-button {
-    -webkit-appearance: none;
-    appearance: none;
-    height: 20px;
-    width: 20px;
-    background-image: url('../images/cross.svg');
-    background-size: 20px 20px;
-    background-repeat: no-repeat;
-    transition: all .3s ease;
-    cursor: pointer;
-}
-
-[type="search"]::-webkit-search-cancel-button:hover {
-    background-color: rgba(132, 189, 194, 0.1);
-    border-radius: 5px;
-}
-*/
-
-/* 
 FOOTER ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
@@ -718,27 +616,27 @@ CONTACTS CONTACTS CONTACTS CONTACTS CONTACTS CONTACTS CONTACTS CONTACTS CONTACTS
 
 #admin-table thead th:nth-child(1),
 #admin-table tbody td:nth-child(1) {
-    width: 3%;
+    width: 25%;
 }
   
 #admin-table thead th:nth-child(2),
 #admin-table tbody td:nth-child(2) {
-    width: 37%;
+    width: 20%;
 }
   
 #admin-table thead th:nth-child(3),
 #admin-table tbody td:nth-child(3) {
-    width: 35%;
+    width: 20%;
 }
   
 #admin-table thead th:nth-child(4),
 #admin-table tbody td:nth-child(4) {
-    width: 15%;
+    width: 20%;
 }
 
 #admin-table thead th:nth-child(5),
 #admin-table tbody td:nth-child(5) {
-    width: 10%;
+    width: 15%;
 }
 
 /* 

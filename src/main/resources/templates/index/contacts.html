@@ -17,11 +17,11 @@
                         <div class="card-info">
                             <h1 class="card-name" th:text="${admin.person.getFullName()}"></h1>
                             <p><strong>КАФЕДРА:</strong><span th:text="${admin.person.department.name}"></span></p>
-                            <p><strong>АУДИТОРИЯ:</strong><span th:text="${admin.contact.contactDetails.officeVisible} ? ${admin.contact.office} : '---'"></span></p>
-                            <p><strong>ЭЛЕКТРОННАЯ&nbsp;ПОЧТА:</strong><br><span th:text="${admin.contact.contactDetails.emailVisible} ? ${admin.contact.email} : '---'"></span></p>
-                            <p><strong>ТЕЛЕФОН:</strong><span th:text="${admin.contact.contactDetails.phoneVisible} ? ${admin.contact.phone} : '---'"></span></p>
+                            <p><strong>АУДИТОРИЯ:</strong><span th:text="${admin.officeVisible} ? ${admin.office} : '---'"></span></p>
+                            <p><strong>ЭЛЕКТРОННАЯ&nbsp;ПОЧТА:</strong><br><span th:text="${admin.emailVisible} ? ${admin.email} : '---'"></span></p>
+                            <p><strong>ТЕЛЕФОН:</strong><span th:text="${admin.phoneVisible} ? ${admin.phone} : '---'"></span></p>
                         </div>
-                        <img th:src="${admin.contact.photo}" alt="photo">
+                        <img th:src="${admin.photo}" alt="photo">
                     </div>
                 </div>
             </div>
@@ -41,9 +41,9 @@
                     <tr th:each="moderator : ${moderatorList}">
                         <td th:text="${admin.person.getFullName()}"></td>
                         <td th:text="${admin.person.department.name}"></td>
-                        <td th:text="${admin.contact.contactDetails.emailVisible} ? ${admin.contact.email} : '---'"></td>
-                        <td th:text="${admin.contact.contactDetails.phoneVisible} ? ${admin.contact.phone} : '---'"></td>
-                        <td th:text="${admin.contact.contactDetails.officeVisible} ? ${admin.contact.office} : '---'"></td>
+                        <td th:text="${admin.emailVisible} ? ${admin.email} : '---'"></td>
+                        <td th:text="${admin.phoneVisible} ? ${admin.phone} : '---'"></td>
+                        <td th:text="${admin.officeVisible} ? ${admin.office} : '---'"></td>
                     </tr>
                     </tbody>
                 </table>
