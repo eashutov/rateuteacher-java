@@ -1,10 +1,7 @@
 package ru.shutov.rateuteacher.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -15,6 +12,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @Getter
 @Setter
+@Builder
 public class Person {
     @Id
     @Column(name = "id")
@@ -38,4 +36,8 @@ public class Person {
 
     @OneToMany(mappedBy = "person")
     private Set<Admin> admins;
+
+    public String getFullName() {
+        return lastName + " " + firstName + " " + patronymic;
+    }
 }
