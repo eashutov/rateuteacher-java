@@ -1,10 +1,8 @@
 package ru.shutov.rateuteacher.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import jakarta.validation.constraints.Email;
+import lombok.*;
 import ru.shutov.rateuteacher.enums.Role;
 
 import java.util.HashSet;
@@ -16,6 +14,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @Getter
 @Setter
+@Builder
 public class Admin {
     @Id
     @Column(name = "id")
@@ -35,9 +34,27 @@ public class Admin {
     @Column(name = "password")
     private String password;
 
-    @OneToOne
-    @JoinColumn(name = "contact", referencedColumnName = "id")
-    private Contact contact;
+    @Column(name = "office")
+    private String office;
+
+    @Column(name = "office_visible")
+    private boolean officeVisible;
+
+    @Email
+    @Column(name = "email")
+    private String email;
+
+    @Column(name = "email_visible")
+    private boolean emailVisible;
+
+    @Column(name = "phone")
+    private String phone;
+
+    @Column(name = "phone_visible")
+    private boolean phoneVisible;
+
+    @Column(name = "photo")
+    private String photo;
 
     @OneToMany(mappedBy = "admin")
     private Set<Survey> surveys = new HashSet<>();
