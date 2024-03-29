@@ -4,12 +4,8 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
-import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
@@ -18,6 +14,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @Getter
 @Setter
+@Builder
 public class Questionnaire {
     @Id
     @Column(name = "id")
@@ -30,8 +27,8 @@ public class Questionnaire {
     private String description;
 
     @OneToMany(mappedBy = "questionnaire")
-    private Set<Question> questions = new HashSet<>();
+    private Set<Question> questions;
 
     @OneToMany(mappedBy = "questionnaire")
-    private Set<Survey> surveys = new HashSet<>();
+    private Set<Survey> surveys;
 }

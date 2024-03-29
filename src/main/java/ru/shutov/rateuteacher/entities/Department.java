@@ -24,5 +24,5 @@ public class Department {
     private String name;
 
     @OneToMany(mappedBy = "department")
-    private Set<Person> persons = new HashSet<>();
+    private Set<Person> persons;
 }

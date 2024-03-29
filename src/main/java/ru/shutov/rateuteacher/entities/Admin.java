@@ -57,5 +57,5 @@ public class Admin {
     private String photo;
 
     @OneToMany(mappedBy = "admin")
-    private Set<Survey> surveys = new HashSet<>();
+    private Set<Survey> surveys;
 }

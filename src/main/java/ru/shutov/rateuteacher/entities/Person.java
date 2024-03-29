@@ -32,7 +32,7 @@ public class Person {
     private Department department;
 
     @OneToMany(mappedBy = "person")
-    private Set<Teacher> teachers = new HashSet<>();
+    private Set<Teacher> teachers;
 
     @OneToMany(mappedBy = "person")
     private Set<Admin> admins;

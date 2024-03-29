@@ -1,12 +1,8 @@
 package ru.shutov.rateuteacher.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
-import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
@@ -15,6 +11,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @Getter
 @Setter
+@Builder
 public class Teacher {
     @Id
     @Column(name = "id")
@@ -33,8 +30,8 @@ public class Teacher {
             joinColumns = { @JoinColumn(name = "teacher") },
             inverseJoinColumns = { @JoinColumn(name = "discipline") }
     )
-    private Set<Discipline> disciplines = new HashSet<>();
+    private Set<Discipline> disciplines;
 
     @OneToMany(mappedBy = "teacher")
-    private Set<Survey> surveys = new HashSet<>();
+    private Set<Survey> surveys;
 }

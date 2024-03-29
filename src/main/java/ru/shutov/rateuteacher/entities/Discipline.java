@@ -1,9 +1,6 @@
 package ru.shutov.rateuteacher.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,5 +24,8 @@ public class Discipline {
     private String name;
 
     @ManyToMany(mappedBy = "disciplines")
-    private Set<Teacher> teachers = new HashSet<>();
+    private Set<Teacher> teachers;
+
+    @OneToMany(mappedBy = "discipline")
+    private Set<Survey> surveys;
 }
