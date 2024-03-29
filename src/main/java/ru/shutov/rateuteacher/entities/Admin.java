@@ -5,7 +5,6 @@ import jakarta.validation.constraints.Email;
 import lombok.*;
 import ru.shutov.rateuteacher.enums.Role;
 
-import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
