@@ -26,6 +26,6 @@ public class Answer {
     @JoinColumn(name = "question", referencedColumnName = "id")
     private Question question;
 
-    @Column(name = "answer")
-    private String answer;
+    @Column(name = "score")
+    private int score;
 }

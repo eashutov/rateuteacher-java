@@ -1,12 +1,14 @@
 package ru.shutov.rateuteacher.entities;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
@@ -24,5 +26,5 @@ public class Department {
     private String name;
 
     @OneToMany(mappedBy = "department")
-    private Set<Person> persons = new HashSet<>();
+    private Set<Person> persons;
 }

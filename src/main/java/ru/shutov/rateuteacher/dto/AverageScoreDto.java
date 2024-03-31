@@ -5,9 +5,11 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Builder
 @Data
 @NoArgsConstructor
-//@AllArgsConstructor
-public class ExtendedRatingDto {
+@AllArgsConstructor
+@Builder
+public class AverageScoreDto {
+    private String part;
+    private double averageScore;
 }

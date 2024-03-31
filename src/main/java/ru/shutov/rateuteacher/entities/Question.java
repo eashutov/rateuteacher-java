@@ -1,13 +1,9 @@
 package ru.shutov.rateuteacher.entities;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import ru.shutov.rateuteacher.enums.QuestionType;
 
-import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
@@ -16,6 +12,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @Getter
 @Setter
+@Builder
 public class Question {
     @Id
     @Column(name = "id")
@@ -36,5 +33,5 @@ public class Question {
     private QuestionType type;
 
     @OneToMany(mappedBy = "question")
-    private Set<Answer> answers = new HashSet<>();
+    private Set<Answer> answers;
 }

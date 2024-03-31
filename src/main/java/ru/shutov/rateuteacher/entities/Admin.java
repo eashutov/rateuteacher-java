@@ -5,7 +5,6 @@ import jakarta.validation.constraints.Email;
 import lombok.*;
 import ru.shutov.rateuteacher.enums.Role;
 
-import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
@@ -57,5 +56,5 @@ public class Admin {
     private String photo;
 
     @OneToMany(mappedBy = "admin")
-    private Set<Survey> surveys = new HashSet<>();
+    private Set<Survey> surveys;
 }

@@ -2,13 +2,9 @@ package ru.shutov.rateuteacher.entities;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
-import java.util.Date;
-import java.util.HashSet;
+import java.time.LocalDate;
 import java.util.Set;
 import java.util.UUID;
 
@@ -17,6 +13,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @Getter
 @Setter
+@Builder
 public class Survey {
     @Id
     @Column(name = "id")
@@ -31,7 +28,7 @@ public class Survey {
 
     @Column(name = "creation_date")
     @Temporal(TemporalType.DATE)
-    private Date creationDate;
+    private LocalDate creationDate;
 
     @Column(name = "study_group")
     private String studyGroup;
@@ -49,5 +46,9 @@ public class Survey {
     private Questionnaire questionnaire;
 
     @OneToMany(mappedBy = "survey")
-    private Set<Rating> ratings = new HashSet<>();
+    private Set<Rating> ratings;
+
+    @ManyToOne
+    @JoinColumn(name = "discipline", referencedColumnName = "id")
+    private Discipline discipline;
 }
