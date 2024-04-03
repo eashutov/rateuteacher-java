@@ -17,6 +17,7 @@ import java.util.UUID;
 public class Discipline {
     @Id
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
     @Column(name = "name")

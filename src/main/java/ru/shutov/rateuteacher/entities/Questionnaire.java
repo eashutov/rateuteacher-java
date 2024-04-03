@@ -1,9 +1,6 @@
 package ru.shutov.rateuteacher.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.Set;
@@ -18,6 +15,7 @@ import java.util.UUID;
 public class Questionnaire {
     @Id
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
     @Column(name = "standard")
@@ -27,7 +25,7 @@ public class Questionnaire {
     private String description;
 
     @OneToMany(mappedBy = "questionnaire")
-    private Set<Question> questions;
+    private Set<Part> parts;
 
     @OneToMany(mappedBy = "questionnaire")
     private Set<Survey> surveys;

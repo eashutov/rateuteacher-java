@@ -15,6 +15,7 @@ import java.util.UUID;
 public class Teacher {
     @Id
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
     @ManyToOne

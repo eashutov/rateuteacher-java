@@ -14,7 +14,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @Getter
 @Setter
-public class Department {
+public class Part {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -23,6 +23,13 @@ public class Department {
     @Column(name = "name")
     private String name;
 
-    @OneToMany(mappedBy = "department")
-    private Set<Person> persons;
+    @Column(name = "title")
+    private String title;
+
+    @ManyToOne
+    @JoinColumn(name = "questionnaire", referencedColumnName = "id")
+    private Questionnaire questionnaire;
+
+    @OneToMany(mappedBy = "part")
+    private Set<Question> questions;
 }

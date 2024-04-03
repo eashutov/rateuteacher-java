@@ -58,7 +58,7 @@ public class RatingService {
 
         Map<String, Double> averageScores = answers.stream()
                 .collect(Collectors.groupingBy(
-                        answer -> answer.getQuestion().getPart(),
+                        answer -> answer.getQuestion().getPart().getName(),
                         Collectors.averagingInt(Answer::getScore)
                 ));
 
