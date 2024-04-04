@@ -5,8 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import ru.shutov.rateuteacher.entities.Admin;
-import ru.shutov.rateuteacher.entities.Survey;
 import ru.shutov.rateuteacher.enums.Role;
+import ru.shutov.rateuteacher.request.SurveyRequest;
 import ru.shutov.rateuteacher.services.AdminService;
 
 import java.util.List;
@@ -18,7 +18,7 @@ public class IndexController {
 
     @GetMapping("/")
     public String index(Model model) {
-        model.addAttribute("survey", new Survey());
+        model.addAttribute("survey", new SurveyRequest());
         return "index/index";
     }
 
