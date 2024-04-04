@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head (pageTitle = 'Survey - ' + ${survey.teacher.person.getFullName() + ' (' + survey.code + ')'})}">
+</head>
+<body>
+<div class="wrapper">
+
+    <div th:replace="~{fragments/layout :: header}"></div>
+
+    <!-- TODO: исправить это, нужно сохранять форму каким-то образом, если это возможно -->
+    <dialog class="dialog" id="modal">
+        <h1>Предупреждение</h1>
+        <p>При старте опроса не закрывайте вкладку, не обновляйте страницу и не переходите на другие разделы сайта, в противном случае выбранные ответы не сохранятся.</p>
+        <p>Поэтому советуем заранее настроить и проверить интернет соединение, выбрать подходящее место и выделить необходимое количество времени на прохождение опроса.</p>
+        <button id="modal-btn" onclick="window['modal'].close()" disabled>5</button>
+    </dialog>
+
+    <main class="main-grid-type">
+        <div></div>
+        <div class="grid-type-container">
+            <div class="qnaire-info">
+                <h1>Информация об опросе</h1>
+                <!-- TODO: <p>Действителен до: </p> -->
+                <p>Группа: <span th:text="${survey.studyGroup}"></span></p>
+                <p>Преподаватель: <span th:text="${survey.teacher.person.getFullName()}"></span></p>
+                <p>Дисциплина: <span th:text="${survey.discipline.name}"></span></p>
+                <p>Кафедра: <span th:text="${survey.teacher.person.department.name}"></span></p>
+                <p class="question">Ответы на предложенные вопросы необходимы для дальнейшего улучшения образовательного процесса, они дадут возможность обратной связи с Вашими преподавателями.
+                    Заполнение этого опросного листа является анонимным. Оценка проводится по 5-балльной шкале. Все поля обязательны к заполнению.</p>
+            </div>
+            <form action="#" th:action="@{/survey/publish}" th:object="${form}" method="post">
+                <input type="hidden" th:value="${survey.code}" id="code" name="code">
+                <input type="hidden" th:value="${survey.id}" id="surveyId" name="surveyId">
+                <div th:each="part : ${survey.questionnaire.parts}" class="category">
+                    <h1 th:text="${part.title}"></h1>
+                    <div th:each="question, stat : ${part.questions}" class="question">
+                        <p><strong th:text="${question.part.name} + (${stat.index} + 1)"></strong><span th:text="${question.question}"></span></p>
+                        <div class="qnaire-input-container">
+                            <div th:each="i : ${#numbers.sequence(1, 5)}" class="input-radio">
+                                <input type="radio" th:field="*{answers['__${question.id}__']}" th:value="${i}" th:id="${question.part.name} + ${stat.index} + '-' + ${i}" required>
+                                <label th:for="${question.part.name} + ${stat.index} + '-' + ${i}" th:text="${i}"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="end-qnaire">
+                    <div class="tooltip">
+                        <input type="reset" value="Отменить">
+                        <span class="tooltiptext">Удалить все введенные данные</span>
+                    </div>
+                    <div class="tooltip">
+                        <input type="submit" value="Отправить" disabled>
+                        <span id="submit-span" class="tooltiptext">Сначала заполните все поля</span>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div>
+            <div class="btn-up btn-up_hide"></div>
+        </div>
+    </main>
+
+    <div th:replace="~{fragments/layout :: footer}"></div>
+
+</div>
+
+<script th:src="@{scripts/modal.js}"></script>
+<script th:src="@{scripts/btnup.js}"></script>
+<script th:src="@{scripts/validation.js}"></script>
+<script th:src="@{scripts/fullish.js}"></script>
+</body>
+</html>

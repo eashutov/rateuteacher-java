@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" th:href="@{styles/style.css}">
-    <link rel="icon" th:href="@{images/rut-icon.ico}" type="image/x-icon">
+    <link rel="stylesheet" th:href="@{/styles/style.css}">
+    <link rel="icon" th:href="@{/images/rut-ico.ico}" type="image/x-icon">
     <title th:text="${pageTitle}"></title>
 </head>
 <body>
     <header th:fragment="header" class="site-header">
         <div class="site-logo">
-            <a th:href="@{/}"><img th:src="@{images/rut_new.png}" alt="rut" width="60px" height="60px"/></a>
+            <a th:href="@{/}"><img th:src="@{/images/rut_new.png}" alt="rut" width="60px" height="60px"/></a>
         </div>
         <nav class="site-navigation">
             <ul class="nav">
@@ -22,7 +22,7 @@
         </nav>
         <div class="site-sign">
             <div class="hover">
-                <a th:href="@{/profile}" class="sign"><img class="icon" th:src="@{images/sign.svg}" alt="sign" width="20px" height="20px" /></a>
+                <a th:href="@{/profile}" class="sign"><img class="icon" th:src="@{/images/sign.svg}" alt="sign" width="20px" height="20px" /></a>
             </div>
         </div>
     </header>
@@ -37,9 +37,9 @@
             <p>by E.A. Shutov</p>
         </div>
         <div class="references hover">
-            <a href="https://www.youtube.com/@omstu"><img class="icon" th:src="@{images/yt_logo.svg}" alt="YT"></a>
-            <a href="https://omgtu.ru/"><img class="icon" th:src="@{images/omstu-logo.svg}" alt="OmSTU"></a>
-            <a href="https://vk.com/omskpoliteh"><img class="icon" th:src="@{images/vk_logo.svg}" alt="VK"></a>
+            <a href="https://www.youtube.com/@omstu"><img class="icon" th:src="@{/images/yt_logo.svg}" alt="YT"></a>
+            <a href="https://omgtu.ru/"><img class="icon" th:src="@{/images/omstu-logo.svg}" alt="OmSTU"></a>
+            <a href="https://vk.com/omskpoliteh"><img class="icon" th:src="@{/images/vk_logo.svg}" alt="VK"></a>
         </div>
     </footer>
 </body>

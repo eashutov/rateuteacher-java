@@ -13,7 +13,7 @@
                 RateUTeacher
             </div>
             <div class="form">
-                <form th:action="@{/survey}" th:object="${survey}" method="post" class="form-input">
+                <form th:action="@{/survey}" th:object="${survey}" method="get" class="form-input">
                     <div class="input-container">
                         <input th:field="*{code}" type="text" class="code-input" id="code" placeholder="Введите код опроса" required>
                         <label for="code" class="label">Код опроса</label>
