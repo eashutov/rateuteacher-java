@@ -16,14 +16,12 @@ import java.util.UUID;
 public class Question {
     @Id
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
     @ManyToOne
-    @JoinColumn(name = "questionnaire", referencedColumnName = "id")
-    private Questionnaire questionnaire;
-
-    @Column(name = "part")
-    private String part;
+    @JoinColumn(name = "part", referencedColumnName = "id")
+    private Part part;
 
     @Column(name = "question")
     private String question;

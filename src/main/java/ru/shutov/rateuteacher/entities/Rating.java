@@ -21,7 +21,7 @@ import java.util.UUID;
         },
         subgraphs = {
                 @NamedSubgraph(name = "answer-question", attributeNodes = {
-                        @NamedAttributeNode(value = "question")
+                        @NamedAttributeNode(value = "question", subgraph = "question-part")
                 }),
                 @NamedSubgraph(name = "survey-teacher-questionnaire-discipline", attributeNodes = {
                         @NamedAttributeNode(value = "teacher", subgraph = "teacher-person"),
@@ -30,12 +30,16 @@ import java.util.UUID;
                 }),
                 @NamedSubgraph(name = "teacher-person", attributeNodes = {
                         @NamedAttributeNode(value = "person")
+                }),
+                @NamedSubgraph(name = "question-part", attributeNodes = {
+                        @NamedAttributeNode(value = "part")
                 })
         }
 )
 public class Rating {
     @Id
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
     @Column(name = "completion_date")

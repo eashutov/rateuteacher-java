@@ -14,9 +14,32 @@ import java.util.UUID;
 @Getter
 @Setter
 @Builder
+@NamedEntityGraph(
+        name = "survey-teacher-questions",
+        attributeNodes = {
+                @NamedAttributeNode(value = "questionnaire", subgraph = "questionnaire-parts"),
+                @NamedAttributeNode(value = "teacher", subgraph = "teacher-person"),
+                @NamedAttributeNode(value = "discipline")
+        },
+        subgraphs = {
+                @NamedSubgraph(name = "questionnaire-parts", attributeNodes = {
+                        @NamedAttributeNode(value = "parts", subgraph = "part-questions")
+                }),
+                @NamedSubgraph(name = "teacher-person", attributeNodes = {
+                        @NamedAttributeNode(value = "person", subgraph = "person-department")
+                }),
+                @NamedSubgraph(name = "person-department", attributeNodes = {
+                        @NamedAttributeNode(value = "department")
+                }),
+                @NamedSubgraph(name = "part-questions", attributeNodes = {
+                        @NamedAttributeNode(value = "questions")
+                })
+        }
+)
 public class Survey {
     @Id
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
     @Column(name = "code")
@@ -33,22 +56,22 @@ public class Survey {
     @Column(name = "study_group")
     private String studyGroup;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "teacher", referencedColumnName = "id")
     private Teacher teacher;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "admin", referencedColumnName = "id")
     private Admin admin;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "questionnaire", referencedColumnName = "id")
     private Questionnaire questionnaire;
 
     @OneToMany(mappedBy = "survey")
     private Set<Rating> ratings;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "discipline", referencedColumnName = "id")
     private Discipline discipline;
 }

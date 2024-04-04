@@ -5,42 +5,42 @@
 <body>
 <div class="wrapper">
 
-  <div th:replace="~{fragments/layout :: header}"></div>
+    <div th:replace="~{fragments/layout :: header}"></div>
 
-  <main class="main-grid-type">
-    <div></div>
-    <div class="grid-type-container">
-      <div class="category after-category">
-        <h1>Рейтинг преподавателей</h1>
-        <div class="question">
-          <h3>ПАРАМЕТРЫ ПОИСКА</h3>
-          <form id="rating-filter">
-            <div class="add-input">
-              <p><strong>Стандарт:</strong></p>
-              <select class="default-input" name="standard" required>
-                 <option th:each="standard : ${standards}" th:value="${standard}" th:text="${standard}"></option>
-              </select>
-              <p><strong>Фамилия:</strong></p><input class="default-input" type="text" name="lastName" autocomplete="off" pattern="^[А-ЯЁ]{1}[а-яё]*$">
-              <p><strong>Имя:</strong></p><input class="default-input" type="text" name="firstName" autocomplete="off" pattern="^[А-ЯЁ]{1}[а-яё]*$">
-              <p><strong>Отчество:</strong></p><input class="default-input" type="text" name="patronymic" autocomplete="off" pattern="^[А-ЯЁ]{1}[а-яё]*$">
-              <p><strong>Год прохождения:</strong></p><input class="default-input" type="number" name="completionYear" autocomplete="off" min="2000" max="2050">
+    <main class="main-grid-type">
+        <div></div>
+        <div class="grid-type-container">
+            <div class="category after-category">
+                <h1>Рейтинг преподавателей</h1>
+                <div class="question">
+                    <h3>ПАРАМЕТРЫ ПОИСКА</h3>
+                    <form id="rating-filter">
+                        <div class="add-input">
+                            <p><strong>Стандарт:</strong></p>
+                            <select class="default-input" name="standard" required>
+                                <option th:each="standard : ${standards}" th:value="${standard}" th:text="${standard}"></option>
+                            </select>
+                            <p><strong>Фамилия:</strong></p><input class="default-input" type="text" name="lastName" autocomplete="off" pattern="^[А-ЯЁ]{1}[а-яё]*$">
+                            <p><strong>Имя:</strong></p><input class="default-input" type="text" name="firstName" autocomplete="off" pattern="^[А-ЯЁ]{1}[а-яё]*$">
+                            <p><strong>Отчество:</strong></p><input class="default-input" type="text" name="patronymic" autocomplete="off" pattern="^[А-ЯЁ]{1}[а-яё]*$">
+                            <p><strong>Год прохождения:</strong></p><input class="default-input" type="number" name="completionYear" autocomplete="off" min="2000" max="2050">
+                        </div>
+                        <div id="rating_not_found" class="warn-c" style="display: none;"><kbd class="warn">По вашему запросу не найдено совпадений</kbd></div>
+                        <input class="grad-btn" type="submit" value="Найти">
+                    </form>
+                </div>
+                <div id="rating-search-result">
+                </div>
             </div>
-            <div id="rating_not_found" class="warn-c" style="display: none;"><kbd class="warn">По вашему запросу не найдено совпадений</kbd></div>
-            <input class="grad-btn" type="submit" value="Найти">
-          </form>
         </div>
-        <div id="rating-search-result">
+        <div>
+            <div class="btn-up btn-up_hide"></div>
         </div>
-      </div>
-    </div>
-    <div>
-      <div class="btn-up btn-up_hide"></div>
-    </div>
-  </main>
+    </main>
 
-  <div th:replace="~{fragments/layout :: footer}"></div>
+    <div th:replace="~{fragments/layout :: footer}"></div>
 
 </div>
- <script th:src="@{scripts/ratings.js}"></script>
+<script th:src="@{scripts/ratings.js}"></script>
 </body>
 </html>
