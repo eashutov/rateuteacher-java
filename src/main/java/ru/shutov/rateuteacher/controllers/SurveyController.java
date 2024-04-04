@@ -32,7 +32,6 @@ public class SurveyController {
         }
 
         Survey survey = surveyService.getSurvey(code);
-        System.err.println(survey.getId());
         SurveyFormDto form = surveyService.getSurveyForm(survey);
         model.addAttribute("form", form);
         model.addAttribute("survey", survey);
